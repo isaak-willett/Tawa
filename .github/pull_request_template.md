@@ -1,7 +1,7 @@
 ## Changes:
 <!-- What changed? -->
 
-## Motivation (if not covered in GH Issue and optionally JIRA Ticket):
+## Motivation (if not covered in GH Issue):
 <!-- Why did you make these changes? -->
 
 ## Type of Change:
@@ -12,8 +12,7 @@
 
 ## Checklist:
 <!-- Complete before asking for review -->
-- [ ] If ticketed add ticket in MR title
-- [ ] Add Jira/Whatever you use link to issue
+- [ ] Add issue link if associated
 - [ ] Include MR comments to help with hard to review sections
 - [ ] Write code in self-documenting style
 - [ ] On Merge Request pass CI checks (or relevant reason for expected failures)
