@@ -1,24 +1,29 @@
 name: Docs
 on: [push, pull_request, workflow_dispatch]
-permissions:
-    contents: write
 jobs:
   docs:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    container:
+      image: python:3.9
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
       - name: Install dependencies
         run: |
           pip install sphinx sphinx_pdj_theme
       - name: Sphinx build
         run: |
           sphinx-build docs/source _build
-      - name: Deploy to GitHub Pagess
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+      - name: Upload to GH Pagess
+        uses: actions/upload-pages-artifact@v1
         with:
-          publish_branch: gh-pages
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: _build/
-          force_orphan: true
+          name: github-pages
+          path: _build
+          retention-days: 1
+      - name: Deploy to GH Pages
+        uses: actions/deploy-pages@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
