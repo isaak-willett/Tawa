@@ -17,13 +17,13 @@ jobs:
       - name: Sphinx build
         run: |
           sphinx-build docs/source _build
-      - name: Deploy to GitHub Pagess
-        uses: upload_pages_artifact
+      - name: Upload to GH Pagess
+        uses: actions/upload-pages-artifact@v1
         with:
           name: github-pages
           path: _build
           retention-days: 1
-      - name:
+      - name: Deploy to GH Pages
         uses: actions/deploy-pages@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
