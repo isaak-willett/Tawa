@@ -3,14 +3,28 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to eototo's documentation!
+Welcome to Tawa's documentation!
 ==================================
+.. automodule:: Tawa
+   :members:
+.. automodule:: Eototo
+   :members:
 
+Tawa
+======
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Platform:
+   
+   tawa
 
+Eototo
+======
+.. toctree::
+   :maxdepth: 2
+   :caption: Interfacing:
 
+   eototo
 
 Indices and tables
 ==================

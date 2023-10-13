@@ -1,0 +1,14 @@
+[project]
+name = "Tawa"
+authors = [{name = "isaak-willett", email ="contact-tawa@gmail.com"}]
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "requests"
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+    "black"
+]
