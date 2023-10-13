@@ -2,7 +2,7 @@ name: Docs
 on: [push, pull_request, workflow_dispatch]
 jobs:
   docs:
-    runs-on: default-k8s-runner-linux-x64
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       pages: write
