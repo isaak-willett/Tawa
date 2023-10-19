@@ -1,3 +1,4 @@
+import getpass
 import os
 import subprocess
 import sys
@@ -200,7 +201,7 @@ def form_docker_linked_command(
             runtime_environment=runtime_environment,
         )
         # we have to return the permissions back to the user who will always be ubuntu
-        subprocess.run(f"sudo chown -R ubuntu {os.getcwd()}/*", shell=True, check=True)
+        subprocess.run(f"sudo chown -R {getpass.getuser()} {os.getcwd()}/*", shell=True, check=True)
         if ret_code.returncode != 0:
             click.secho(f"Failed {link_cli_command.name}", bg="black", fg="red", err=True, bold=True)
             sys.exit(1)

@@ -80,8 +80,13 @@ def run_generic_command(
             runtime_environment=runtime_environment
         )
 
+    # have to add read/write bindings to port changes back to users
+    entry_point_mounts = [
+        "--mount",
+        f"type=bind,source={os.getcwd()},target=/opt/project",
+    ]
     entrypoint_args = [] if entrypoint_args is None else entrypoint_args
-    docker_commands = ["docker", "run"] + [image] + entrypoint_args
+    docker_commands = ["docker", "run"] + entry_point_mounts + [image] + entrypoint_args
     if display_cmd:
         print("> Running docker command: \"{}\"".format(' '.join(docker_commands)))
     return subprocess.run(
