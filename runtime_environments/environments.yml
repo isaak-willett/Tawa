@@ -1,0 +1,3 @@
+environments:
+  cuda_12:
+    - Dockerfile.project

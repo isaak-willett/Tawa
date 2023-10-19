@@ -1,0 +1,1 @@
+ENVIRONMENT_WELLKNOWN_LOC = "runtime_environments"

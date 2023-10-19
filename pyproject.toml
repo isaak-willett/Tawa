@@ -1,26 +1,3 @@
-[project]
-name = "tawa"
-authors = [{name = "isaak-willett", email ="contact-tawa@gmail.com"}]
-version = "0.1.0"
-requires-python = ">=3.11"
-dependencies = [
-    "requests",
-    "click"
-]
-
-[project.optional-dependencies]
-dev = [
-    "ruff",
-    "black"
-]
-build = [
-    "sphinx",
-    "sphinx-pdj-theme"
-]
-
-[project.scripts]
-taw-cli = "tawa.taw_cli.taw_cli:taw_cli"
-
 [tool.ruff]
 # Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
 select = ["E4", "E7", "E9", "F"]

@@ -1,0 +1,4 @@
+# allow files/directories necessary for Tawa projects
+!Tawa
+!Eototo
+!pyproject.toml
