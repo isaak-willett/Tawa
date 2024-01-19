@@ -25,7 +25,7 @@ def link_internal_commands(
         group_to_link: click.core.Group
 ) -> None:
     # grab all of the commands that would normally be associated with the group in that
-    # local jadoocli, assume all click commands are used (which in general they should be)
+    # local cli, assume all click commands are used (which in general they should be)
     click_commands = [getattr(taw_cli, command) for command
                       in dir(taw_cli) if isinstance(getattr(taw_cli, command), click.core.Command)
                       and not isinstance(getattr(taw_cli, command), click.core.Group)]
@@ -151,21 +151,21 @@ def options_from_local_options(
 def form_docker_linked_command(
     taw_cli_command: click.core.Command
 ) -> click.core.Command:
-    """Take a command definition from jadoocli_local and parse.
-    Parses a click command from jadoocli local into a callable that
-    can then be added as a linking command to jadoocli cloud. The idea
+    """Take a command definition from taw-cli and parse.
+    Parses a click command from taw-cli local into a callable that
+    can then be added as a linking command to eototo. The idea
     is that we can let most/all commands that need to be defined in the
     local be defined there. Then just link ourselves by calling through
     the docker container.
     We can infer the inputs, arguments, and names from just the command
-    definition. Assuming the local jadoocli_local is installed in the
+    definition. Assuming the local taw-cli is installed in the
     container, it's one simple step to pass these to the container when
     we need to call something.
     Args:
         tawa_cli_command (click.Command): command to parse into linking command
     Returns:
         click.Command: command that can call linked command with proper inputs through
-        the jadoo docker image.
+        the tawa docker image.
     """
 
     @click.command(name=taw_cli_command.name, help=taw_cli_command.help)
