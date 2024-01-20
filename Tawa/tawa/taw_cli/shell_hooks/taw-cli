@@ -1,0 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+import sys
+from tawa.taw_cli.taw_cli import taw_cli
+if __name__ == '__main__':
+    sys.exit(taw_cli())

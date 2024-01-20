@@ -1,15 +1,16 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "eototo"
 authors = [{name = "isaak-willett", email ="contact-tawa@gmail.com"}]
 version = "0.1.0"
 requires-python = ">=3.11"
-dependencies = [
-    "requests",
-    "click",
-    "maturin",
-    "ruff",
-    "black",
-]
+dynamic = ["dependencies"]
+
+[tools.setuptools.dynamic]
+dependencies = {file = ["requirements/requirements.txt"]}
 
 [project.scripts]
 eototo = "eototo.eototo:eototo"

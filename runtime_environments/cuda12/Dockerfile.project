@@ -30,6 +30,20 @@ RUN apt-get install python3-pip -y
 RUN ln -s /usr/bin/python3.11 /usr/bin/python
 RUN python -m pip install --upgrade pip
 
-COPY . /opt/project
+COPY Tawa/requirements/requirements.txt /opt/project/Tawa/requirements/requirements.txt
+RUN python -m pip install -r Tawa/requirements/requirements.txt
+COPY Tawa/requirements/requirements.build.txt /opt/project/Tawa/requirements/requirements.build.txt
+RUN python -m pip install -r Tawa/requirements/requirements.build.txt
+COPY Tawa/requirements/requirements.dev.txt /opt/project/Tawa/requirements/requirements.dev.txt
+RUN python -m pip install -r Tawa/requirements/requirements.dev.txt
 
-RUN python -m pip install -e Tawa['dev, build']
+COPY Eototo/requirements /opt/project/Eototo/requirements
+RUN python -m pip install -r Eototo/requirements/requirements.txt
+
+COPY . /opt/project/
+ENV PYTHONPATH=$PYTHONPATH:/opt/project/Tawa
+ENV PYTHONPATH=$PYTHONPATH:/opt/project/Eototo
+
+RUN ln -s /opt/project/Tawa/tawa/taw_cli/shell_hooks/taw-cli /usr/local/bin/taw-cli
+RUN chmod +x /usr/bin/python
+RUN chmod +x /usr/local/bin/taw-cli

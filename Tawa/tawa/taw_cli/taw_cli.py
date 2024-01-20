@@ -3,9 +3,10 @@ import pkg_resources
 import click
 
 from tawa.taw_cli.commands.commands import format, lint
+from tawa.taw_cli.utils.shell_utils import pull_version_from_pyproject
 
 @click.group(help="Tawa cli tools for running internal commands")
-@click.version_option(version=pkg_resources.get_distribution('tawa').version, prog_name="Tawa")
+@click.version_option(version=pull_version_from_pyproject(), prog_name="Tawa")
 @click.pass_context
 def taw_cli(ctx: click.Context):
     pass
