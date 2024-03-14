@@ -1,15 +1,21 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "eototo"
-authors = [{name = "isaak-willett", email ="contact-tawa@gmail.com"}]
-version = "0.1.0"
-requires-python = ">=3.11"
-dependencies = [
-    "requests",
-    "click",
-    "maturin",
-    "ruff",
-    "black",
-]
+authors = [{name = "iwiley", email ="willettisaak@gmail.com"}]
+version = "0.1"
+requires-python = ">=3.10"
+dynamic = ["dependencies", "readme"]
+
+[project.urls]
+Homepage = "https://github.com/isaak-willett/Tawa"
+Issues = "https://github.com/isaak-willett/Tawa/issues"
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.rst"]}
+dependencies = {file = ["requirements/requirements.txt"]}
 
 [project.scripts]
 eototo = "eototo.eototo:eototo"

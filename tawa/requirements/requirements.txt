@@ -1,0 +1,7 @@
+click>=8.1.7
+
+# Local version label ("+[...]") can only be used with == or !=, so we have to
+# pin to exact dependency versions.
+torch>=1.13.0
+torchvision>=0.14.0
+

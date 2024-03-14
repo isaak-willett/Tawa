@@ -1,0 +1,7 @@
+#!/usr/local/bin/python
+# -*- coding: utf-8 -*-
+import re
+import sys
+from tawa.tawa_inner_cli.tawa_cli import tawa_cli
+if __name__ == '__main__':
+    sys.exit(tawa_cli())
