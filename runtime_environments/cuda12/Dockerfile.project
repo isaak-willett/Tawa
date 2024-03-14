@@ -1,6 +1,22 @@
 FROM tawa-cuda12-base
 
 WORKDIR /opt/tawa
-COPY . /opt/tawa
 
-RUN python -m pip install -e Tawa['dev, build']
+COPY tawa/requirements/requirements.build.txt /opt/tawa/tawa/requirements/requirements.build.txt
+RUN python -m pip install -r tawa/requirements/requirements.build.txt
+
+COPY tawa/requirements/requirements.dev.txt /opt/tawa/tawa/requirements/requirements.dev.txt
+RUN python -m pip install -r tawa/requirements/requirements.dev.txt
+
+COPY tawa/requirements/requirements.txt /opt/tawa/tawa/requirements/requirements.txt
+RUN python -m pip install -r tawa/requirements/requirements.txt
+
+COPY eototo/requirements/requirements.txt /opt/tawa/eototo/requirements/requirements.txt
+RUN python -m pip install -r eototo/requirements/requirements.txt
+
+COPY . /opt/tawa
+ENV PYTHONPATH=$PYTHONPATH:/opt/tawa/tawa
+ENV PYTHONPATH=$PYTHONPATH:/opt/tawa/eototo
+
+RUN ln -s /opt/tawa/tawa/tawa/tawa_cli/shell_hooks/taw-cli /usr/local/bin/tawa-cli
+RUN chmod +x /usr/local/bin/tawa-cli
