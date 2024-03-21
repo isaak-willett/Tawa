@@ -1,3 +1,4 @@
 environments:
-  cuda_12:
-    - Dockerfile.project
+  cuda12:
+    base: Dockerfile.base
+    project: Dockerfile.project
