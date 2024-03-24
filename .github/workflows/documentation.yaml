@@ -1,5 +1,11 @@
 name: Docs
-on: [push, pull_request, workflow_dispatch]
+on:
+  pull_request:
+    branches:
+      - "main"
+  push:
+    branches:
+      - "main"
 jobs:
   docs:
     runs-on: ubuntu-latest
@@ -23,7 +29,7 @@ jobs:
           name: github-pages
           path: _build
           retention-days: 1
-      - name: Deploy to GH Pages
+        - name: Deploy to GH Pages
         uses: actions/deploy-pages@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
