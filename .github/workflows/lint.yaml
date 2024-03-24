@@ -7,15 +7,15 @@ on:
     branches:
       - "main"
 jobs:
-  Lint:
+  lint:
     runs-on: ubuntu-latest
-  container:
-    image: python:3.10
-  steps:
-    - uses: actions/checkout@v3
-    - name: Install eototo
-      run: |
-        python3 -m pip install eototo
-    - name: Run Linting
-      run: |
-        eototo lint 
+    container:
+      image: python:3.10
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install eototo
+        run: |
+          python3 -m pip install eototo
+      - name: Run Linting
+        run: |
+          eototo lint 
