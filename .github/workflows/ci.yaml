@@ -1,0 +1,16 @@
+name: Docs
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  Lint:
+    runs-on: ubuntu-latest
+  container:
+    image: python3.10
+  steps:
+    - uses: actions/checkout@v3
+    - name: Install eototo
+      run: |
+        python3 -m pip install eototo
+
+    - name: Run Linting
+      run: |
+        eototo lint 
