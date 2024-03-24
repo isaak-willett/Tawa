@@ -16,7 +16,6 @@ jobs:
     - name: Install eototo
       run: |
         python3 -m pip install eototo
-
     - name: Run Linting
       run: |
         eototo lint 
